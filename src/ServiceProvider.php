@@ -8,7 +8,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function boot(): void
     {
         $validator = $this->app['validator'];
-        $validator->extend('idCardNumber', function ($attribute, $value, $paramters) {
+        $validator->extend('idCardNumber', function ($attribute, $value, $paramters, $validator) {
             return  (new IdCardNumber($value))->isValid();
         });
     }
