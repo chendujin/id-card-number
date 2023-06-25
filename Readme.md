@@ -1,6 +1,6 @@
 ## 介绍
 
-此库是用于扩展验证规则,`idCardNumber`。
+此库是用于扩展验证规则,`id_card_number`。
 
 ### 环境需求
 
@@ -21,7 +21,7 @@ composer require chendujin/id-card-number
 public function store(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'id_number' => 'required|idCardNumber'
+        'id_number' => 'required|id_card_number'
     ]);
    
     if ($validator->fails()) {
