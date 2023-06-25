@@ -16,6 +16,6 @@ class IdCardNumber extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'id_card_number';
+        return 'IdCardNumber';
     }
 }
