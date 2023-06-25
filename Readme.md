@@ -38,9 +38,24 @@ public function store(Request $request)
 
 ```php
 $IDCard = new \Chendujin\IdCardNumber\IdCardNumber('身份证号码');
+
+// 根据身份证号，自动返回对应的身份证地址
 $IDCard->getAddress();
+
+// 根据身份证号，自动返回对应的性别
 $IDCard->getSex();
+
+// 根据身份证号，自动返回对应的生日
 $IDCard->getBirthday();
+
+// 根据身份证号，自动返回对应的星座
+$IDCard->getIDCardXZ();
+
+// 根据身份证号，自动返回对应的生肖
+$IDCard->getIDCardSX();
+
+// 根据身份证号，自动返回对应的省、自治区、直辖市代
+$IDCard->getProvince();
 ```
 
 ### 单元测试
