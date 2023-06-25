@@ -1,0 +1,57 @@
+{
+    "name": "chendujin/id-card-number",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chendujin",
+            "email": "thomas.chen.jobs@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Chendujin\\IdCardNumber\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Chendujin\\IdCardNumber\\Tests\\": "./tests"
+        }
+    },
+    "require": {
+        "illuminate/config": "~5|^6|^7|^8",
+        "illuminate/filesystem": "~5|^6|^7|^8",
+        "illuminate/support": "~5|^6|^7|^8",
+        "illuminate/hashing": "~5|^6|^7|^8",
+        "illuminate/session": "~5|^6|^7|^8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.00-dev"
+        },
+        "hooks": {
+            "pre-commit": [
+                "composer test",
+                "composer style-lint"
+            ],
+            "pre-push": [
+                "composer test",
+                "composer style-lint"
+            ]
+        },
+        "laravel": {
+            "providers": [
+                "Chendujin\\IdCardNumber\\ServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --ansi",
+        "style-lint": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --diff --dry-run --ansi",
+        "test": "./vendor/bin/phpunit --coverage-text --colors=always --cache-result-file=./build/.phpunit.result.cache --verbose",
+        "test-coverage": "./vendor/bin/phpunit --coverage-html=./build/coverage/ --coverage-clover=./build/clover.xml --color=always --cache-result-file=./build/.phpunit.result.cache --verbose"
+    }
+}
