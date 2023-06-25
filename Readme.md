@@ -21,7 +21,7 @@ composer require chendujin/id-card-number
 public function store(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'id_number' => 'required|idNumber'
+        'id_number' => 'required|idCardNumber'
     ]);
    
     if ($validator->fails()) {
