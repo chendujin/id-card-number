@@ -12,6 +12,17 @@
 ```shell script
 composer require chendujin/id-card-number
 ```
+### 配置
+
+#### Laravel环境无需配置
+
+#### Lumen
+
+将下面代码放入 `bootstrap/app.php`
+
+```shell script
+$app->register(Chendujin\IdCardNumber\ServiceProvider::class);
+```
 
 ### 使用
 
