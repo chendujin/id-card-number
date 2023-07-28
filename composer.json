@@ -1,5 +1,6 @@
 {
     "name": "chendujin/id-card-number",
+    "description": "Chinese Mainland Personal ID Card Validation",
     "type": "library",
     "license": "MIT",
     "authors": [
