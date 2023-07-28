@@ -144,7 +144,7 @@ class IdCardNumber
         $regions = self::getRegionCode();
         $code = $this->getCode();
         [$provinceCode, $cityCode] = $this->getProvinceAndCityCode();
-        return $regions[$provinceCode] . $regions[$cityCode] . $regions[$code];
+        return $regions[$provinceCode] ?? '' . $regions[$cityCode] ?? '' . $regions[$code] ?? '';
     }
 
     /**
