@@ -101,7 +101,7 @@ class IdCardNumber
      */
     public function getCode(): string
     {
-        if (! $this->code) {
+        if (!$this->code) {
             $this->code = substr($this->id, 0, 6);
         }
 
@@ -136,15 +136,42 @@ class IdCardNumber
     }
 
     /**
-     * 获取行政代码对应的省市区地址
+     * 获取行政代码对应的省市地址
      * @return string
      */
     public function getAddress(): string
     {
         $regions = self::getRegionCode();
+        [$provinceCode, $cityCode] = $this->getProvinceAndCityCode();
+        $province = $regions[$provinceCode] ?? '';
+        $city = $regions[$cityCode] ?? '';
+        return $province . $city;
+    }
+
+    /**
+     * 获取行政代码对应的省市区地址
+     * @return string
+     */
+    public function getAreaAddress(): string
+    {
+        $regions = self::getRegionCode();
         $code = $this->getCode();
         [$provinceCode, $cityCode] = $this->getProvinceAndCityCode();
-        return $regions[$provinceCode] ?? '' . $regions[$cityCode] ?? '' . $regions[$code] ?? '';
+        $province = $regions[$provinceCode] ?? '';
+        $city = $regions[$cityCode] ?? '';
+        $area = $regions[$code] ?? '';
+        return $province . $city . $area;
+    }
+
+    /**
+     * 根据身份证号，自动返回对应的省、自治区、直辖市代
+     * @return string
+     */
+    public function getProvince(): string
+    {
+        $regions = self::getRegionCode();
+        [$provinceCode, $cityCode] = $this->getProvinceAndCityCode();
+        return $regions[$provinceCode] ?? '';
     }
 
     /**
@@ -218,24 +245,6 @@ class IdCardNumber
         if($x == 3 || $x == -9){$value = "狗";}
         if($x == 2 || $x == -10){$value = "猪";}
         return $value;
-    }
-
-    /**
-     * 根据身份证号，自动返回对应的省、自治区、直辖市代
-     * @return string
-     */
-    public function getProvince(): string
-    {
-        $index = substr($this->id,0,2);
-        $area = array(
-            11 => "北京",  12 => "天津", 13 => "河北",   14 => "山西", 15 => "内蒙古", 21 => "辽宁",
-            22 => "吉林",  23 => "黑龙江", 31 => "上海",  32 => "江苏",  33 => "浙江", 34 => "安徽",
-            35 => "福建",  36 => "江西", 37 => "山东", 41 => "河南", 42 => "湖北",  43 => "湖南",
-            44 => "广东", 45 => "广西",  46 => "海南", 50 => "重庆", 51 => "四川", 52 => "贵州",
-            53 => "云南", 54 => "西藏", 61 => "陕西", 62 => "甘肃", 63 => "青海", 64 => "宁夏",
-            65 => "新疆", 71 => "台湾", 81 => "香港", 82 => "澳门", 91 => "国外"
-        );
-        return $area[$index];
     }
 
     /**
