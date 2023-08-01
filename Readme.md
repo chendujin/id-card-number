@@ -4,7 +4,7 @@
 
 ### 环境需求
 
-1. php >= 7.3
+1. php >= 7.4
 2. Composer
 
 ### 安装
@@ -50,8 +50,14 @@ public function store(Request $request)
 ```php
 $IDCard = new \Chendujin\IdCardNumber\IdCardNumber('身份证号码');
 
-// 根据身份证号，自动返回对应的身份证地址
+// 根据身份证号，自动返回对应的身份证地址(省)
+$IDCard->getProvince();
+
+// 根据身份证号，自动返回对应的身份证地址(省市)
 $IDCard->getAddress();
+
+// 根据身份证号，自动返回对应的身份证地址(省市区)
+$IDCard->getAreaAddress();
 
 // 根据身份证号，自动返回对应的性别
 $IDCard->getSex();
