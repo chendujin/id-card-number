@@ -88,7 +88,10 @@ class IdCardNumber
         $remainder = $this->getRemainder();
         $CRC = $this->getCRC();
 
-        if (isset($regions[$code]) && $CRC == $this->remainder[$remainder]) {
+        // if (isset($regions[$code]) && $CRC == $this->remainder[$remainder]) {
+        //     return true;
+        // }
+        if ($CRC == $this->remainder[$remainder]) {
             return true;
         }
 
