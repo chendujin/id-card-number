@@ -16,7 +16,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Chendujin\\IdCardNumber\\Tests\\": "./tests"
+            "Chendujin\\IdCardNumber\\Tests\\": "tests/"
         }
     },
     "require": {
@@ -28,22 +28,9 @@
         "illuminate/session": "~5|^6|^7|^8|^9"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": ">=5.6"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.00-dev"
-        },
-        "hooks": {
-            "pre-commit": [
-                "composer test",
-                "composer style-lint"
-            ],
-            "pre-push": [
-                "composer test",
-                "composer style-lint"
-            ]
-        },
         "laravel": {
             "providers": [
                 "Chendujin\\IdCardNumber\\ServiceProvider"
@@ -51,9 +38,6 @@
         }
     },
     "scripts": {
-        "style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --ansi",
-        "style-lint": "./vendor/bin/php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --diff --dry-run --ansi",
-        "test": "./vendor/bin/phpunit --coverage-text --colors=always --cache-result-file=./build/.phpunit.result.cache --verbose",
-        "test-coverage": "./vendor/bin/phpunit --coverage-html=./build/coverage/ --coverage-clover=./build/clover.xml --color=always --cache-result-file=./build/.phpunit.result.cache --verbose"
+        "test": "./vendor/bin/phpunit"
     }
 }
